@@ -1,26 +1,63 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+html {
+  scroll-behavior: smooth;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Hide Next.js dev indicators and debug overlays */
+next-route-announcer,
+#__next-build-watcher,
+[data-nextjs-toast],
+[data-nextjs-dialog],
+[data-nextjs-route-announcer] {
+  display: none !important;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Жесткое скрытие любых отладочных плавающих кнопок и сторонних виджетов */
+#vercel-toolbar,
+.vercel-toolbar,
+[data-vercel-toolbar],
+div[class*="vercel"],
+div[class*="dev-indicator"],
+div[class*="dev-tools"],
+div[class*="nextjs-dev"],
+[data-nextjs-dev-indicator],
+div[style*="position: fixed"][style*="z-index"][style*="bottom"],
+div[style*="position: fixed"][style*="z-index"][style*="right"],
+div[style*="position: fixed"][style*="z-index"][style*="top"],
+div[style*="position: fixed"][style*="z-index"][style*="left"],
+div[class*="indicator"],
+div[class*="badge"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Жесткое и полное удаление devtools-индикатора Next.js */
+#devtools-indicator,
+.nextjs-toast,
+[data-next-badge-root],
+[data-next-badge],
+#next-logo,
+button[data-nextjs-dev-tools-button] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Жесткое скрытие внешнего скрипта-контейнера отладочного оверлея Next.js */
+script[data-nextjs-dev-overlay="true"],
+script[data-nextjs-dev-overlay] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
 }

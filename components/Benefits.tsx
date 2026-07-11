@@ -1,5 +1,3 @@
-import React from 'react'
-
 const items = [
   { title: 'Пошаговая навигация', desc: 'Простой и понятный процесс без лишних вопросов.', icon: 'M12 2a10 10 0 1 0 10 10' },
   { title: 'Проверка данных', desc: 'Автоматические подсказки и контроль ошибок.', icon: 'M5 13l4 4L19 7' },
@@ -29,3 +27,4 @@ export default function Benefits() {
     </section>
   )
 }
+

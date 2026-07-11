@@ -1,17 +1,16 @@
-"use client"
-
-import React, { useEffect, useRef, useState } from 'react'
-
-function Navbar() {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light')
+'use client'
+import { useEffect, useRef, useState } from 'react'
+ 
+export default function Navbar() {
+  const [theme, setTheme] = useState('light')
   const [open, setOpen] = useState(false)
-  const headerRef = useRef<HTMLDivElement | null>(null)
+  const headerRef = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
     try {
       const stored = localStorage.getItem('theme')
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-      const initial = stored ? (stored as 'light' | 'dark') : prefersDark ? 'dark' : 'light'
+      const initial = stored ? stored : prefersDark ? 'dark' : 'light'
       setTheme(initial)
       if (initial === 'dark') document.documentElement.classList.add('dark')
     } catch {}
@@ -23,13 +22,16 @@ function Navbar() {
       const v = h ? `${h}px` : ''
       document.documentElement.style.scrollPaddingTop = v
       document.body.style.scrollPaddingTop = v
+      // expose header height for sections' scroll-mt via CSS var
       document.documentElement.style.setProperty('--header-offset', v || '0px')
     }
+    // recalc after layout
     requestAnimationFrame(updateScrollPadding)
     window.addEventListener('resize', updateScrollPadding)
     return () => window.removeEventListener('resize', updateScrollPadding)
   }, [])
 
+  // update when mobile menu opens/closes (header height changes)
   useEffect(() => {
     const h = headerRef.current?.offsetHeight || 0
     const v = h ? `${h}px` : ''
@@ -38,6 +40,7 @@ function Navbar() {
     document.documentElement.style.setProperty('--header-offset', v || '0px')
   }, [open])
 
+  // update when theme changes (possible font/rendering shifts)
   useEffect(() => {
     const recalc = () => {
       const h = headerRef.current?.offsetHeight || 0
@@ -52,7 +55,7 @@ function Navbar() {
   }, [theme])
 
   const toggleTheme = () => {
-    const next: 'light' | 'dark' = theme === 'dark' ? 'light' : 'dark'
+    const next = theme === 'dark' ? 'light' : 'dark'
     setTheme(next)
     if (next === 'dark') {
       document.documentElement.classList.add('dark')
@@ -65,11 +68,25 @@ function Navbar() {
   const navLink = 'px-3 py-2 text-sm font-medium text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white'
 
   return (
-    <header ref={headerRef as React.RefObject<HTMLDivElement>} className="sticky top-0 z-40 w-full border-b border-slate-200/60 bg-white/80 backdrop-blur dark:border-slate-800 dark:bg-slate-950/80">
+    <header ref={headerRef} className="sticky top-0 z-40 w-full border-b border-slate-200/60 bg-white/80 backdrop-blur dark:border-slate-800 dark:bg-slate-950/80">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <a href="#home" className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded bg-gradient-to-br from-blue-500 to-indigo-600 shadow-md"></div>
-          <span className="text-base font-semibold tracking-tight text-slate-900 dark:text-white">IshonchProtokol</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-8 w-8 text-emerald-500"
+          >
+            <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2" />
+            <circle cx="7" cy="17" r="2" />
+            <path d="M9 17h6" />
+            <circle cx="17" cy="17" r="2" />
+          </svg>
+          <span className="text-base font-semibold tracking-tight text-slate-900 dark:text-white">Европротокол 24/7</span>
         </a>
         <div className="hidden items-center gap-1 md:flex">
           <a href="#benefits" className={navLink}>Преимущества</a>
@@ -106,5 +123,3 @@ function Navbar() {
     </header>
   )
 }
-
-export default Navbar
