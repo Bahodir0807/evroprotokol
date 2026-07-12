@@ -53,7 +53,7 @@ export default function Hero() {
   return (
     <section id="home" className="relative isolate overflow-hidden bg-[#050b14]">
       {/* Radial gradient overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(59,130,246,0.15)_0%,_transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.15)_0%,transparent_70%)]" />
       
       <div className="container mx-auto max-w-5xl px-4 py-12 sm:py-16 md:py-20 text-center relative z-10">
         <div className="mb-6 sm:mb-8">
