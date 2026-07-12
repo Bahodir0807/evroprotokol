@@ -1,8 +1,8 @@
 export const SITE_CONFIG = {
   name: 'Европротокол Ассистанс',
-  phone: '+998 (95) 240 09 09',
+  phone: '+998993280777',
   phoneAlt: '+998 (90) 328 17 77',
-  phoneRaw: '+998952400909',
+  phoneRaw: '+998993280777',
   telegram: 'https://t.me/Otsenka777',
   instagram: 'https://www.instagram.com/yevroprotokol24_7?igsh=ZHZzOHplNmc0YTd2',
   sbddPhone: '102',
