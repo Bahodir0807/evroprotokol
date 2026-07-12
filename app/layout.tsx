@@ -8,7 +8,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://evroprotokol.uz"),
+  metadataBase: new URL("https://evroprotokoll.uz"),
   title: {
     default: "Европротокол Ассистанс | Оформление ДТП без СБДД",
     template: "%s | Европротокол Ассистанс",

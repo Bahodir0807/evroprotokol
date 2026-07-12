@@ -13,7 +13,7 @@ export default function Home() {
     name: "Европротокол Ассистанс Ташкент",
     description:
       "Официальное оформление Европротокола за 15 минут без вызова СБДД (ГАИ) в Ташкенте.",
-    url: "https://evroprotokol.uz",
+    url: "https://evroprotokoll.uz",
     telephone: SITE_CONFIG.phoneRaw,
     address: {
       "@type": "PostalAddress",

@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/_next/"],
       },
     ],
-    sitemap: "https://evroprotokol.uz/sitemap.xml",
+    sitemap: "https://evroprotokoll.uz/sitemap.xml",
   };
 }
