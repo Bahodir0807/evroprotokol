@@ -1,5 +1,6 @@
 'use client'
 import type { MouseEvent } from 'react'
+import Image from 'next/image'
 import { PhoneIcon, TelegramIcon, ClockIcon, MapPinIcon, ShieldIcon } from '@/components/ui/Icon'
 import { HERO_CONTENT, SITE_CONFIG } from '@/lib/content'
 
@@ -106,9 +107,13 @@ export default function Hero() {
         {/* Image with neon border */}
         <div className="max-w-3xl w-full mx-auto">
           <div className="relative rounded-2xl border-2 border-blue-500/80 shadow-[0_0_30px_rgba(59,130,246,0.25)] overflow-hidden">
-            <img
+            <Image
               src="/evroprotokoll.jpg"
               alt="Европротокол бланк"
+              width={1200}
+              height={800}
+              priority
+              sizes="(max-width: 1024px) 100vw, 40vw"
               className="w-full h-auto"
             />
           </div>
